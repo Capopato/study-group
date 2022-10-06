@@ -1,22 +1,26 @@
-import random
-
 class Brake:
     def brakes(self):
-        # Make simple automatic choice of yes or no for the boolean
-        choicelst = ['yes', 'no']
-        randnum = random.randint(0,1)
-        yesno = choicelst[randnum]
-        print(yesno)
+        global brake  # Global variable
 
-        # Let boolean decide if the car is breaking or not
-        if yesno == 'yes':
-            gasUsage = 0
-            print (f'Your gas usages is {gasUsage} unit per second')
-        elif yesno == 'no':
-            gasUsage = 1
-            print (f'Your gas usages is {gasUsage} unit per second')
+        braking = input('Did you brake during your trip?(yes/no): ').lower()  # Ask if user has brakes during trip
+
+        if braking == 'yes':  # If braked
+            speed = int(input('How fast were u driving?(in km/s): '))  # Ask input
+            conditions = input('Were the conditions normal or wet?(normal/wet): ')  # Ask input
+
+            if conditions == 'normal':  # Calculate for normal conditions
+                brakeDistance = ((speed / 10)**2)  # Formula braking distance
+                print(f'The brakedistance under normal conditions at the speed of {speed} km/h is {int(brakeDistance)} meters. Please be aware and take caution.')  # Print speed and braking distance
+                brake = True  # Return brake is True
+                return brake  # Return brake
+            elif conditions == 'wet':  # Calculate for wet conditions
+                brakeDistance = ((speed/10)**2) + (((speed/10)**2)/2)  # Formula braking distance
+                print(f'The brakedistance under normal conditions at the speed of {speed} km/h is {int(brakeDistance)} meters. Please be aware and take caution.')  # Print speed and braking distance
+                brake = True  # Return brake is True
+                return brake  # Return brake
+
+        elif braking == 'no':  # If there was no braking
+            brake = False  # Brake is False
+            return brake  # Return brake
         else:
-            print ('Not a valid choice')
-
-
-Brake().brakes()
+            print('Please make a choice between on or off')  # Let user make a valid choice
