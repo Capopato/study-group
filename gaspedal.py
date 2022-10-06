@@ -1,0 +1,2 @@
+class GasPedal:
+    pass
