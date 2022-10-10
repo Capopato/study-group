@@ -2,11 +2,11 @@
 You're going to build a very very simple car.
 This car has an engine, a gas tank, a key, four wheels, a brake and gas pedals.
 
-The car can only move if the key is turned on
-For every second the gas pedal is pressed then 1 unit of gas is burned from the tank
-The car can not move when there is no gasoline
-The car stops when the brake is pressed down and no gasoline is consumed
-The car can not move without its 4 wheels
+The car can only move if the key is turned on.
+For every second the gas pedal is pressed then 1 unit of gas is burned from the tank.
+The car can not move when there is no gasoline.
+The car stops when the brake is pressed down and no gasoline is consumed.
+The car can not move without its 4 wheels.
 This car also has
 
 a brand
