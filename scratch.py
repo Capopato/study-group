@@ -26,20 +26,32 @@ from car_components import CarComponents
 # a brand
 
 class Car:
-    def __init__(self, engine: Engine, components: CarComponents, brand: str, chassis_number: int, production_year: int):
+    def __init__(self, engine: Engine, gastank: int, key: bool, wheels: int, gas_pedal: bool, brake_pedal: bool, brand: str,
+                 chassis_number: int, production_year: int):
         self.engine = engine
-        self.components = components
+        self.gastank = gastank
+        self.key = key
+        self.wheels = wheels
+        self.gas_pedal = gas_pedal
+        self.brake_pedal = brake_pedal
         self.brand = brand
         self.chassis_number = chassis_number
         self.production_year = production_year
         self.horsepower = []
 
     def __repr__(self):
-        return f"Car brand: {self.brand}, chassis number: {self.chassis_number}, production year: {self.production_year})\n" \
-               f"{self.components}\n{self.engine}"
+        return f"Car ({self.engine}, gastank: {self.gastank} liters, key turned: {self.key}, wheels: {self.wheels}"\
+               f", gaspedal pressed: {self.gas_pedal}, brakepedal pressed: {self.brake_pedal}, brand: {self.brand}, " \
+               f"chassis number: {self.chassis_number}, production year: {self.production_year}"
 
-    def can_move(self) -> bool:
-        return self.components.key and self.components.gastank > 0
+    def can_move(self):
+        return self.key and self.gastank > 0
+
+    def turn_key(self):
+        if self.key == True:
+            self.key = False
+        elif self.key == False:
+            self.key = True
 
     def add_horsepower(self, horsepower: Engine):
         self.horsepower.append(horsepower.horsepower)
@@ -57,3 +69,15 @@ class Car:
             chas_num += chas_num.join(str(r))  # Append generated numbers to empty string
 
         return(int(chas_num))  # Return chassis number
+
+
+engine1 = Engine(Engine.idNumber(), 270, 'Ferrari')
+engine2 = Engine(Engine.idNumber(), 255, 'Mercedes')
+car1 = Car(engine1, 100, False, 4, True, False, 'Ferrari', Car.chassis_number(), 2022)
+car2 = Car(engine2, 100, False, 4, True, False, 'Mercedes', Car.chassis_number(), 2020)
+
+car1.add_horsepower(engine1)
+car1.add_horsepower(engine2)
+
+
+print(car1.chassis_number)
